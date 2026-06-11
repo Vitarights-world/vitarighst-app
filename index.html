@@ -210,11 +210,6 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
     <div><div class="ob-label">Dein Name</div><input class="ob-input" id="ob-name" type="text" placeholder="" autocomplete="name"></div>
     <div><div class="ob-label">WhatsApp / Telefon</div><input class="ob-input" id="ob-phone" type="tel" placeholder="" autocomplete="tel"></div>
     <div><div class="ob-label">E-Mail (optional)</div><input class="ob-input" id="ob-email" type="email" placeholder="" autocomplete="email"></div>
-    <div>
-      <div class="ob-label">Dein Interessenten-Link</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px">Den Link hast du auf der Interessenten-Seite erstellt.</div>
-      <input class="ob-input" id="ob-interessen-link" type="url" placeholder="">
-    </div>
     <button class="ob-btn" onclick="saveOnboarding()">Los geht's →</button>
   </div>
   <div class="ob-skip" onclick="skipOnboarding()">Später ausfüllen</div>
@@ -258,10 +253,10 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
     <div class="quick-tile" onclick="showScreen('s-produkte');setNav('s-produkte')">
       <div class="quick-tile-icon">📦</div><div class="quick-tile-label">Meine Produkte</div><div class="quick-tile-sub">Beosigner, ViSponder &amp; mehr</div>
     </div>
-    
-    <div class="quick-tile" onclick="showScreen('s-mehr');setNav('s-mehr')">
-      <div class="quick-tile-icon">💌</div><div class="quick-tile-label">Weiterempfehlen</div><div class="quick-tile-sub">Text zum Teilen</div>
+    <div class="quick-tile" onclick="showScreen('s-kontakt');setNav('s-kontakt')">
+      <div class="quick-tile-icon">💌</div><div class="quick-tile-label">Kontakt &amp; Empfehlung</div><div class="quick-tile-sub">Berater &amp; Empfehlungstext</div>
     </div>
+    
   </div>
   <div class="divider"></div>
   <div class="section-label">Tipp des Tages</div>
@@ -1404,7 +1399,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 <div class="screen" id="s-kontakt">
   <div class="app-header">
     <div class="header-label">Pers&#246;nliche Begleitung</div>
-    <div class="header-title">Dein Kontakt</div>
+    <div class="header-title">Kontakt &amp; Empfehlung</div>
     <div class="header-sub">Dein Berater ist immer f&#252;r dich da</div>
   </div>
   <div class="section-label">Dein pers&#246;nlicher Ansprechpartner</div>
@@ -1433,6 +1428,15 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
     <button class="edit-partner-btn" id="edit-partner-btn" onclick="openEdit()">&#9999;&#65039; Kontaktdaten bearbeiten</button>
   </div>
   <div class="info-banner"><div class="info-banner-icon">&#128172;</div><p><strong>Immer f&#252;r dich da</strong> &mdash; bei Fragen oder Unsicherheiten. Meld dich jederzeit!</p></div>
+  <div class="section-label">Jemanden weiterempfehlen</div>
+    <div class="card" style="border-left:4px solid var(--gold)">
+      <div class="card-header"><div class="card-icon gold">&#128140;</div><div><div class="card-title">Bereit zum Weiterempfehlen?</div><div class="card-subtitle">Text kopieren &middot; Link einf&#252;gen &middot; senden</div></div></div>
+      <div class="card-body">
+        <div class="copy-box" id="share-text">Text wird geladen...</div>
+        <button class="copy-btn" onclick="copyShareText()" style="margin-top:10px">&#128203; Text kopieren</button>
+        <div class="copy-success" id="copy-success">&#10003; Kopiert!</div>
+      </div>
+    </div>
   <div id="partner-only-section" style="display:none">
     <div style="margin:4px 16px 8px">
       <button onclick="resetPartner()" style="width:100%;padding:14px;background:none;border:1.5px solid var(--beige-mid);border-radius:10px;font-size:15px;color:var(--text-mid);cursor:pointer;font-weight:600">&#128260; Daten zur&#252;cksetzen &amp; neu einrichten</button>
@@ -1452,15 +1456,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         <div id="link-copy-success" style="display:none;font-size:15px;color:green;font-weight:600">&#10003; Kopiert!</div>
       </div>
     </div>
-    <div class="section-label">Jemanden weiterempfehlen</div>
-    <div class="card" style="border-left:4px solid var(--gold)">
-      <div class="card-header"><div class="card-icon gold">&#128140;</div><div><div class="card-title">Bereit zum Weiterempfehlen?</div><div class="card-subtitle">Text kopieren &middot; Link einf&#252;gen &middot; senden</div></div></div>
-      <div class="card-body">
-        <div class="copy-box" id="share-text">Text wird geladen...</div>
-        <button class="copy-btn" onclick="copyShareText()" style="margin-top:10px">&#128203; Text kopieren</button>
-        <div class="copy-success" id="copy-success">&#10003; Kopiert!</div>
-      </div>
-    </div>
+    
   </div>
   <div class="info-banner"><div class="info-banner-icon">&#9888;&#65039;</div><p>Die Produkte dienen der F&#246;rderung des Wohlbefindens. Bei gesundheitlichen Beschwerden bitte stets einen Arzt aufsuchen.</p></div>
 </div>
@@ -1496,16 +1492,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
     <button class="edit-partner-btn" onclick="openEdit()">✏️ Kontaktdaten bearbeiten</button>
   </div>
 
-  <div class="section-label">Jemanden weiterempfehlen</div>
-  <div class="card">
-    <div class="card-header"><div class="card-icon gold">💌</div><div><div class="card-title">Text zum Weiterleiten</div><div class="card-subtitle">Einfach kopieren &amp; per WhatsApp teilen</div></div></div>
-    <div class="card-body">
-      <p style="margin-bottom:12px">Kennst du jemanden, dem das helfen könnte? Kopiere diesen Text und schick ihn weiter:</p>
-      <div class="copy-box" id="share-text">Hallo! 😊 Ich möchte dir etwas zeigen, das mein Wohlbefinden wirklich verändert hat. Es geht um Vitarights Innovations — Produkte, die direkt auf Zellebene wirken und die körpereigene Selbstregulation unterstützen. Ob Schlaf, Energie, Allergien, Stress, Konzentration, Bewegungsapparat oder die Gesundheit deines Tieres — es gibt für fast jedes Thema das passende Produkt. Ich habe selbst tolle Ergebnisse erlebt und begleite dich gerne persönlich. Meld dich einfach — ich finde mit dir heraus, was für dich am besten passt! 🌟</div>
-      <button class="copy-btn" onclick="copyShareText()">📋 Text kopieren</button>
-      <div class="copy-success" id="copy-success">✓ Kopiert! Jetzt in WhatsApp einfügen.</div>
-    </div>
-  </div>
+  
 
   <!-- NUR FUER PARTNER SICHTBAR -->
   
@@ -1537,10 +1524,21 @@ function updatePartnerUI(){
   document.getElementById('row-phone').style.display=p?'flex':'none';
   document.getElementById('row-email').style.display=e?'flex':'none';
   document.getElementById('no-contact-hint').style.display=(p||e)?'none':'block';
+  var waRow=document.getElementById('row-wa');
+  var waLink=document.getElementById('wa-link');
+  if(waRow&&waLink){
+    if(p){
+      var clean=p.replace(/[^0-9+]/g,'');
+      if(clean.startsWith('+')){}else if(clean.startsWith('00'))clean='+'+clean.substring(2);else if(clean.startsWith('0'))clean='+49'+clean.substring(1);
+      waLink.href='https://wa.me/'+clean.replace('+','');
+      waRow.style.display='block';
+    } else {
+      waRow.style.display='none';
+    }
+  }
   var av=document.getElementById('partner-avatar');
   if(n){var parts=n.trim().split(' ');av.textContent=parts.map(function(w){return w[0]||'';}).join('').substring(0,2).toUpperCase();}
   else{av.textContent='🌟';}
-  // Weiterempfehlungstext mit Beraternamen
   var shareEl=document.getElementById('share-text');
   if(shareEl){
     if(n){
@@ -1549,7 +1547,7 @@ function updatePartnerUI(){
       var linkText=il?il:'[Interessenten-Link hier einfuegen]';
       shareEl.textContent='Hey, ich nutze seit einiger Zeit ein tolles Tool zur Unterstuetzung bei gesundheitlichen Problemen. '+n+' hat mir das empfohlen und mich so super beraten und begleitet. Ich bin wirklich sehr zufrieden und wollte dir gerne sowohl das Tool als auch '+fn+' vorstellen. Wenn du magst, schau dir mal die Infos an :) '+linkText;
     } else {
-      shareEl.textContent='Hey, ich nutze seit einiger Zeit ein tolles Tool zur Unterstuetzung bei gesundheitlichen Problemen. Meine Beraterin hat mir das empfohlen und mich super begleitet. Schau mal rein :) [Interessenten-Link hier einfuegen]';
+      shareEl.textContent='Meine Beraterin hat mir dieses tolle Tool empfohlen. Wenn du magst, schau mal rein: [Interessenten-Link hier einfuegen]';
     }
   }
   // Partner vs Kunden-Ansicht
@@ -1573,16 +1571,45 @@ function getQP(key){
   }catch(e){}
   return '';
 }
+function updateShareText(){
+  var el=document.getElementById('share-text');
+  if(!el)return;
+  var n=partner.name||'';
+  var lt='https://lambent-dusk-ca44ce.netlify.app/';
+  if(n){
+    var fn=n.split(' ')[0];
+    el.textContent='Hey, ich nutze seit einiger Zeit ein tolles Tool zur Unterstuetzung bei gesundheitlichen Problemen. '+n+' hat mir das empfohlen und mich so super beraten und begleitet. Ich bin wirklich sehr zufrieden und wollte dir gerne sowohl das Tool als auch '+fn+' vorstellen. Wenn du magst, schau dir mal die Infos an :) '+lt;
+  } else {
+    el.textContent='Meine Beraterin hat mir dieses tolle Tool empfohlen. Schau mal rein: https://lambent-dusk-ca44ce.netlify.app/';
+  }
+}
 function checkOnboarding(){
+  // Versuche Hash-Parameter #d= (Netlify-sicher)
+  var hash=window.location.hash.substring(1);
+  var d='';
+  if(hash.indexOf('d=')===0) d=hash.substring(2);
+  if(d){
+    try{
+      var decoded=JSON.parse(atob(decodeURIComponent(d)));
+      if(decoded.n){
+        isCustomerView=true;
+        partner={name:decoded.n||'',phone:decoded.t||'',email:decoded.e||'',photo:'',interessenLink:decoded.il||''};
+        savePartner();updatePartnerUI();updateShareText();
+        document.getElementById('onboarding').classList.add('hidden');
+        return;
+      }
+    }catch(ex){}
+  }
+  // Fallback: alte n=/tel=/e= Parameter
   var n=getQP('n');
   if(n){
     isCustomerView=true;
-    partner={name:n,phone:getQP('t'),email:getQP('e'),photo:''};
+    partner={name:n,phone:getQP('tel')||getQP('t'),email:getQP('e'),photo:'',interessenLink:''};
     savePartner();updatePartnerUI();
     document.getElementById('onboarding').classList.add('hidden');
     return;
   }
-  loadPartner();updatePartnerUI();
+  loadPartner();updatePartnerUI();updateShareText();
   if(!partner.name){document.getElementById('onboarding').classList.remove('hidden');}
   else{document.getElementById('onboarding').classList.add('hidden');}
 }
@@ -1626,6 +1653,7 @@ function showScreen(id){
 function setNav(id){
   document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active');});
   var b=document.getElementById('nav-'+id);if(b)b.classList.add('active');
+  if(id==='s-kontakt')updateShareText();
 }
 function toggleExpand(btn){
   var c=btn.nextElementSibling,a=btn.querySelector('span:last-child');
@@ -1796,7 +1824,6 @@ function closeHealthModal(){
 
 
 
-var isCustomerView=false;
 
 function getQP(key){
   try{
@@ -1812,7 +1839,7 @@ function getQP(key){
 function makeWaLink(phone){
   if(!phone)return '#';
   var clean=phone.replace(/[^0-9+]/g,'');
-  if(clean.startsWith('0'))clean='+49'+clean.substring(1);
+  if(clean.startsWith('+')){}else if(clean.startsWith('00'))clean='+'+clean.substring(2);else if(clean.startsWith('0'))clean='+49'+clean.substring(1);
   return'https://wa.me/'+clean.replace('+','');
 }
 
@@ -1880,14 +1907,12 @@ function copyShareText(){
 }
 
 function generatePersonalLink(type){
-  var n=encodeURIComponent(partner.name||'');
-  var t=encodeURIComponent(partner.phone||'');
-  var e=encodeURIComponent(partner.email||'');
-  if(!n){alert('Bitte zuerst deinen Namen eintragen.');return;}
-  var params='?n='+n+(t?'&t='+t:'')+(e?'&e='+e:'');
+  if(!partner.name){alert('Bitte zuerst deinen Namen eintragen.');return;}
+  var data={n:partner.name,t:partner.phone||'',e:partner.email||'',il:partner.interessenLink||''};
+  var d=btoa(unescape(encodeURIComponent(JSON.stringify(data))));
   var base=window.location.href.split('?')[0];
   var baseDir=base.substring(0,base.lastIndexOf('/')+1);
-  var link=(type==='interesse')?baseDir+'vitarights-interesse.html'+params:baseDir+'index.html'+params;
+  var link=(type==='interesse')?baseDir+'vitarights-interesse.html#d='+d:baseDir+'index.html#d='+d;
   document.getElementById('link-output').value=link;
   document.getElementById('link-box').style.display='block';
   doCopy(link);
